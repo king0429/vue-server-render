@@ -2,12 +2,13 @@
   <section class="container">
     <div>
       <h1 class="title">
-        serverRenden
+        server-side-render
       </h1>
       <h2 class="subtitle">
-        Nuxt.js project
+        sql-express-template-html
       </h2>
       <div class="links">
+        <nuxt-link to="/data_table">SQL</nuxt-link>
         <a
           href="./test"
           target="_blank"
