@@ -14,11 +14,11 @@ app.get('/test1', function (req, res, next) {
   res.send({a: '接口数据', b: 'hello world'})
 })
 app.get('/test2', function (req, res, next) {
-  connection.query(`SELECT * FROM api_goodslist`, function (err, data) {
+  connection.query(`SELECT * FROM api_business`, function (err, data) {
     if (err) {
       res.send({err, list: []})
     } else {
-      res.send({list: data})
+      res.send({list: data.filter(val => isNaN(val.product_unit))})
     }
   })
   // res.send({a:[1, 2, 3], code: 1})

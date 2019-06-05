@@ -30,23 +30,28 @@ export default {
     return {title: '数据库数据'}
   },
   async asyncData ({query, app}) {
-    let { list }  = await app.$axios.$get('http://127.0.0.1:3000/test2')
-    return { list }
+    return {
+      titleList: [
+        {name: '_index', key: ''},
+        {name: '货物名称', key: 'id'},
+        {name: '货物单位',  key: 'userID'},
+        {name: '货物数量',  key: 'name'}
+      ]
+    }
   },
   data () {
     return {
       // list: [],
-      titleList: [
-        {name: '_index', key: ''},
-        {name: '货物名称', key: 'product_name'},
-        {name: '货物单位',  key: 'product_unit'},
-        {name: '货物数量',  key: 'product_quantity'},
-        {name: '货物价格',  key: 'product_contents'}
-      ],
+    }
+  },
+  computed: {
+    list: function () {
+      return this.$store.getters.businessList
     }
   },
   mounted () {
     console.log(this.$store)
+    this.$store.dispatch('api_buiness_list')
   },
   methods: {
     handleClick () {
