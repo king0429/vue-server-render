@@ -23,4 +23,8 @@ app.get('/test2', function (req, res, next) {
   })
   // res.send({a:[1, 2, 3], code: 1})
 })
+app.post('/form', function (req, res, next) {
+  console.log(req.body)
+  res.send({code: '1', msg: 'ready!'})
+})
 module.exports = app;

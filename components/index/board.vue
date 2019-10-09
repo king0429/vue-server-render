@@ -5,6 +5,7 @@
         v-for="(item, index) in dataList"
         :key="index"
         class="index_"
+        @click="handleNav(index)"
       >
         <p>{{ showTitle[index] }}</p>
         <p>{{ item }}</p>
@@ -18,12 +19,18 @@ export default {
   props: {
     dataList: {
       type: Array,
-      default: () => ([])
+      default: () => []
     }
   },
   data: () => ({
-    showTitle: ['第一次', '第二次']
-  })
+    showTitle: ['第一个', '第二个']
+  }),
+  methods: {
+    handleNav (index) {
+      console.log(index)
+    }
+  }
+
 }
 </script>
 <style lang="less" scoped>
@@ -44,6 +51,8 @@ export default {
       // height: 160px;
       border: 1px solid #acacac;
       margin: 0 10px;
+      transition: all ease-in .33s;
+      cursor: pointer;
       p:first-child {
         line-height: 32px;
         padding: 0 5px;
@@ -54,10 +63,11 @@ export default {
         margin: 30px 0;
         text-align: center;
       }
-      p:nth-child(2):hover {
-        text-decoration: underline;
-        color: #38adff;
-      }
+    }
+    li:hover {
+      background: #38adff;
+      color: #fff;
+      border: 1px solid #333333;
     }
   }
 </style>
